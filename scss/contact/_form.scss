@@ -1,0 +1,106 @@
+@use '../variables' as var;
+@use '../mixins' as mxn;
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    h1 {
+        &:before {
+            @include mxn.star;
+            top: 35%;
+            left: -9%;
+        }
+        &:after {
+            @include mxn.star;
+            top: 35%;
+            left: 101%;
+        }
+    }
+    p {
+        display: flex;
+        text-align: center;
+        gap: 1.8rem;
+        align-items: baseline;
+        font-size: var.$font-size-form;
+        span:before {
+            font-style: italic;
+        }
+    }
+    span, label {
+        position: relative;
+        &:before {
+            @include mxn.star;
+            border-bottom: 1px dotted var.$color-red;
+            top: 5px;
+            left: -12px;
+            font-size: .7rem;
+            padding-bottom: 3px;
+        }
+    }
+    .form-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem 3.5rem;
+        background-color: var.$color-light;
+        font-size: var.$font-size-form;
+        h3 {
+            padding: 1rem 0;
+        }
+        input, textarea {
+            outline: none;
+            padding: 1rem;
+            border-radius: 5px;
+            min-width: 1%;
+            width: 100%;
+        }
+        input {
+            min-height: 35px;
+            max-height: 35px;
+            display: block;
+        }
+        .form-container-top {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            .booking, .details {
+                display: flex;
+                flex-direction: column;
+                width: 47%;
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2rem;
+                }
+            }
+        }
+        .form-container-bottom {
+            width: 100%;
+            label:before {
+                display: none;
+            }
+        }
+        button {
+            padding: .5rem;
+            width: 40%;
+            border-radius: 5px;
+            color: white;
+            font-weight: 500;
+            letter-spacing: 2px;
+            
+            font-family: var.$font-default;
+            background-color: var.$color-brown;
+            border: none;
+            outline: none;
+        }
+    }
+    @media (min-width: 980px) {
+        width: 85%;
+    }
+}

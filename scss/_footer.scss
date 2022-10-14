@@ -1,0 +1,96 @@
+@use './variables' as var;
+
+footer {
+    width: 100%;
+    font-size: var.$font-size-footer;
+    .container-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-image: url('../assets/images/footer-bg.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .info {
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 3rem 2rem;
+        width: 100%;
+        gap: 3rem;
+        .card-info {
+            min-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            h6 {
+                font-size: var.$font-size-title-footer;
+                border-bottom: 1px dashed white;
+                width: 100%;
+                padding: 1.6rem 0;
+                text-align: center;
+            }
+            a {
+                padding: 1rem;
+                color: white;
+                transition: all .2s ease-in;
+                font-size: 2rem;
+                &:hover {
+                    color:var.$color-red;
+                }
+            }
+            span {
+                padding: .5rem 0;
+            }
+        }
+    }
+    .terms {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem 4rem 4rem;
+        background-color: var.$color-footer-bg;
+        color: white;
+        .adaptive-img-contain {
+            width: 64px;
+            height: 64px;
+        }
+        p {
+            text-align: center;
+            span, a, a:visited {
+                color: white;
+                text-decoration: underline;
+            }
+        }
+    }
+    @media (min-width: 780px) {
+        .info {
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            .card-info {
+                max-width: 30%;
+                min-width: 30%;
+            }
+        }
+    }
+    @media (min-width: 980px) {
+        .info {
+            max-width: var.$width-container;
+            
+            padding-bottom: 5rem;
+            
+        }
+        .terms {
+            max-width: 100%;
+            min-width: 100%;
+            p {
+                
+                max-width: var.$width-container;
+                
+            }
+        }
+    }
+}

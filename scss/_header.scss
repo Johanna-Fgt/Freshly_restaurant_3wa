@@ -1,0 +1,130 @@
+@use './variables' as var;
+@use './mixins' as mxn;
+
+header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    padding-top: 5rem;
+    .logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem;
+        .adaptive-img-contain {
+            width: 15rem;
+            aspect-ratio: 1 / 1;
+        }
+        a {
+           h1 {
+            font-family: var.$font-default;
+            font-weight: 500;
+            color: black;
+            &:before {
+                @include mxn.star;
+                top: calc(var.$font-size-title /3);
+                left: -18px;
+            }
+            &:after {
+                @include mxn.star;
+                top: calc(var.$font-size-title /3);
+                left: calc(100% + 5px);
+            }
+           }
+            &:visited {
+                color: black;
+            }
+        }
+    }
+    nav {
+        width: 100%;
+        background-color: var.$color-light;
+        ul {
+            width: 100%;
+            height: 100%;
+            li {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                .active {
+                    color: white;
+                    background-color: var.$color-brown;
+                }
+                a {
+                    color: black;
+                    padding: 2rem;
+                    box-shadow: 0 1px 0 0  var.$color-brown;
+                    font-weight: 700;
+                    transition: all .2s ease-in;
+                    &:hover {
+                        color: white;
+                        background-color: var.$color-red;
+                        box-shadow: none;
+                    }
+                }
+            }
+        }
+    }  
+}
+@media (min-width: 780px) and (max-width: 979px) {
+    header {
+        gap: 1rem;
+        .logo {
+            gap: .5rem;
+        }
+        nav > ul {
+            display: flex;
+            justify-content: space-evenly;
+            li > a {
+                box-shadow: none;
+            }
+        }
+    }
+}
+@media (min-width: 980px) {
+    header {
+        max-width: var.$width-container;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 2rem;
+        .logo {
+            flex-direction: row;
+            a > h1 {
+                font-size: calc(var.$font-size-title / 1.2);
+                white-space: nowrap;
+                &:before {
+                    @include mxn.star;
+                    top: 25%;
+                    left: -7%;
+                }
+                &:after {
+                    @include mxn.star;
+                    top: 25%;
+                    left: 102%;
+                }
+            }
+            .adaptive-img-contain {
+                width: 8rem;
+                aspect-ratio: 1 / 1;
+            }
+        }
+        nav {
+            background-color: transparent;
+            ul {
+                display: flex;
+                justify-content: flex-end;
+                gap: 2rem;
+                li {
+                    background-color: var.$color-light;
+                    a {
+                        box-shadow: none;
+                        padding: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}

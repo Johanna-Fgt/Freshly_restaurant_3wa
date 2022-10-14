@@ -1,0 +1,9 @@
+@mixin star {
+    font-size: 1rem;
+    content: "\f005";
+    color: #950000;
+    font-family: "Font Awesome 5 Free";
+    position: absolute;
+    top: 40%;
+    left: -1%;
+}

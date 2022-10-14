@@ -1,0 +1,45 @@
+@use './variables' as var;
+
+html {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 62.5%;
+}
+
+body {
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 0;
+    // overflow: hidden;
+    font-weight: 500;
+    font-size: var.$font-size-default;
+    font-family: var.$font-default;
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 87%, rgba(235,227,219,1) 100%);
+    h1 {
+        font-size: var.$font-size-title;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var.$font-title;
+        position: relative;
+    }
+    ul {
+        list-style: none;
+    }
+    a {
+        text-decoration: none;
+    }
+}
+main {
+    width: 100%;
+    max-width: var.$width-container;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
