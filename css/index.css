@@ -493,19 +493,111 @@ header nav ul li a:hover {
     padding: 1rem;
   }
 }
-.slider {
+.slider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
   width: 100%;
 }
-.slider .adaptive-img-cover {
+.slider-container .slider {
+  width: 100%;
+  max-width: 1400px;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+}
+.slider-container .slider .slides {
+  display: flex;
+  overflow-x: scroll;
+  position: relative;
+  scroll-behavior: smooth;
+  -ms-scroll-snap-type: x mandatory;
+      scroll-snap-type: x mandatory;
+  padding-bottom: 4rem;
+}
+.slider-container .slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 100%;
+  height: 400px;
+  scroll-snap-align: center;
+  margin-right: 0px;
+  box-sizing: border-box;
+  background: white;
+  transform-origin: center center;
+  transform: scale(1);
+}
+.slider-container .adaptive-img-cover {
   min-width: 240px;
   min-height: 200px;
   width: 100%;
   height: 100%;
 }
-@media (min-width: 780px) {
-  .slider .adaptive-img-cover {
-    min-height: 340px;
-  }
+.slider-container .slide a {
+  background: none;
+  border: none;
+}
+.slider-container a.slide__prev,
+.slider-container .slider::before {
+  left: 5%;
+}
+.slider-container a.slide__next, .slider-container .slider::after {
+  right: 5%;
+}
+.slider-container .slider::before,
+.slider-container .slider::after,
+.slider-container .slide__prev,
+.slider-container .slide__next {
+  position: absolute;
+  top: 48%;
+  width: 35px;
+  height: 35px;
+  padding: 3px;
+  box-sizing: border-box;
+}
+.slider-container .slider::before {
+  content: "\f137";
+  font-family: "Font Awesome 5 Free";
+  opacity: 0.8;
+  font-size: 3.5rem;
+  color: white;
+  z-index: 1;
+  pointer-events: none;
+}
+.slider-container .slider::after {
+  content: "\f138";
+  font-family: "Font Awesome 5 Free";
+  opacity: 0.8;
+  font-size: 3.5rem;
+  color: white;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.slider__nav {
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  width: 200px;
+  margin-left: -100px;
+  text-align: center;
+}
+.slider__nav .slider__navlink {
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: #444444;
+  margin: 0 10px 0 10px;
+  opacity: 0.7;
+}
+.slider__nav .active {
+  background-color: #950000;
+  opacity: 1;
 }
 
 .hero {
@@ -912,12 +1004,192 @@ header nav ul li a:hover {
   }
 }
 
+.filtered-list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4rem 1rem;
+  position: relative;
+  padding-bottom: 3rem;
+}
+.filtered-list button {
+  border: none;
+  outline: none;
+  background-color: #ebe3db;
+  color: #4c4343;
+  padding: 1rem 2rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  position: relative;
+}
+.filtered-list button:focus {
+  background-color: #950000;
+  color: #ebe3db;
+}
+.filtered-list .cheat-div {
+  width: 0px;
+  max-height: 30px;
+}
+.filtered-list .adaptive-img-cover {
+  min-width: 47%;
+  height: 230px;
+  box-shadow: 4px 4px 20px 0px #4c4343;
+  position: relative;
+  transition: all 450ms ease-in;
+}
+.filtered-list .adaptive-img-cover:hover {
+  transform: scale(1.05);
+}
+.filtered-list .adaptive-img-cover:hover > .container-price {
+  -webkit-animation: fadeIn 450ms ease-in;
+          animation: fadeIn 450ms ease-in;
+  opacity: 1;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.3;
+  }
+  60% {
+    opacity: 0.5;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.filtered-list .container-price {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  background-color: rgba(76, 67, 67, 0.9);
+  padding: 3rem;
+  max-height: 230px;
+  min-height: 230px;
+}
+.filtered-list .container-price .price {
+  max-height: 170px;
+  min-height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: white;
+  text-align: center;
+  box-shadow: 0 0 0 5px white;
+}
+.filtered-list .container-price .price .adaptive-img-contain {
+  height: 24px;
+  aspect-ratio: 1/1;
+}
+.filtered-list .cheat-container {
+  width: 100%;
+  height: calc(100% - 60px);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -4;
+  background-color: #ebe3db;
+}
+@media (min-width: 725px) {
+  .filtered-list .cheat-div {
+    width: 80px;
+  }
+}
+@media (min-width: 780px) {
+  .filtered-list .adaptive-img-cover {
+    min-width: 32.3333333333%;
+    height: 250px;
+  }
+  .filtered-list .container-price {
+    max-height: 250px;
+    min-height: 250px;
+  }
+  .filtered-list .container-price .price {
+    max-height: 190px;
+    min-height: 190px;
+  }
+}
+@media (min-width: 813px) {
+  .filtered-list .cheat-div {
+    width: 180px;
+  }
+}
+@media (min-width: 1108px) {
+  .filtered-list {
+    min-height: 380px;
+  }
+  .filtered-list button {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .filtered-list .cheat-div {
+    width: 280px;
+  }
+}
+
+button[data-filter=meat]:focus ~ div:not([class*=meat]) {
+  display: none;
+}
+
+button[data-filter=fish]:focus ~ div:not([class*=fish]) {
+  display: none;
+}
+
+button[data-filter=vegan]:focus ~ div:not([class*=vegan]) {
+  display: none;
+}
+
 .sides {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+}
+.sides h1 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.sides h1:before {
+  font-size: 1rem;
+  content: "\f005";
+  color: #950000;
+  font-family: "Font Awesome 5 Free";
+  position: absolute;
+  top: 40%;
+  left: -1%;
+  top: 35%;
+  left: -5%;
+}
+.sides h1:after {
+  font-size: 1rem;
+  content: "\f005";
+  color: #950000;
+  font-family: "Font Awesome 5 Free";
+  position: absolute;
+  top: 40%;
+  left: -1%;
+  top: 35%;
+  left: 101%;
 }
 .sides h2 {
   width: -webkit-fit-content;
@@ -933,7 +1205,7 @@ header nav ul li a:hover {
   top: 40%;
   left: -1%;
   top: 35%;
-  left: -9%;
+  left: -10%;
 }
 .sides h2:after {
   font-size: 1rem;

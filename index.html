@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Freshly restaurant</title>
 		<link rel="icon" type="image/x-icon" href="../assets/icons/favicon.png" />
-		<link rel="stylesheet" href="../css/index.css" />
+		<link rel="stylesheet" href="./css/index.css" />
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/fontawesome.min.css" />
@@ -32,20 +32,53 @@
 			<nav>
 				<ul>
 					<li><a href="#" class="active">Home</a></li>
-					<li><a href="./about.html">About</a></li>
-					<li><a href="./menus.html">Menus</a></li>
-					<li><a href="./contact.html">Contact</a></li>
+					<li><a href="./pages/about.html">About</a></li>
+					<li><a href="./pages/menus.html">Menus</a></li>
+					<li><a href="./pages/contact.html">Contact</a></li>
 				</ul>
 			</nav>
 		</header>
 		<main>
-			<section class="slider">
-				<div class="adaptive-img-cover">
-					<span>
-						<img src="../assets/images/slider-01.jpg" alt="Miam" />
-					</span>
+			<section class="slider-container">
+				<div class="slider">
+					<div class="slides">
+						<div id="slides__1" class="slide">
+							<div class="adaptive-img-cover">
+								<span>
+									<img src="../assets/images/slider-01.jpg" alt="Slide 1" />
+								</span>
+							</div>
+							<a class="slide__prev" href="#slides__4" title="Next"></a>
+							<a class="slide__next" href="#slides__2" title="Next"></a>
+						</div>
+
+						<div id="slides__2" class="slide">
+							<div class="adaptive-img-cover">
+								<span>
+									<img src="../assets/images/slider-02.jpg" alt="Slide 2" />
+								</span>
+							</div>
+							<a class="slide__prev" href="#slides__1" title="Prev"></a>
+							<a class="slide__next" href="#slides__3" title="Next"></a>
+						</div>
+
+						<div id="slides__3" class="slide">
+							<div class="adaptive-img-cover">
+								<span>
+									<img src="../assets/images/slider-03.jpg" alt="Slide 3" />
+								</span>
+							</div>
+							<a class="slide__prev" href="#slides__2" title="Prev"></a>
+							<a class="slide__next" href="#slides__1" title="Prev"></a>
+						</div>
+					</div>
+
+					<div class="slider__nav">
+						<a class="slider__navlink active" href="#slides__1"></a>
+						<a class="slider__navlink" href="#slides__2"></a>
+						<a class="slider__navlink" href="#slides__3"></a>
+					</div>
 				</div>
-				<div class="fake-slider-dots"></div>
 			</section>
 
 			<section class="hero">
