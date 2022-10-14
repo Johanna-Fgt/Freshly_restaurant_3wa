@@ -15,11 +15,3 @@ PAGE MENUS
 ---
 
 Le plugin de fonction de tri utilisé pour la page Menus est : mixitup (https://www.kunkalabs.com/mixitup/)
-
----
-
-PAGE CONTACT
-
----
-
-La carte est affichée avec open street map.
