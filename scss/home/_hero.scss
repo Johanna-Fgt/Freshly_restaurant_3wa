@@ -2,28 +2,9 @@
 @use '../mixins' as mxn;
 
 .hero {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    align-items: center;
-    h1 {
-        text-align: center;
-        &:before {
-            @include mxn.star;
-            top: 45%;
-            left: -3%;
-        }
-        &:after {
-            @include mxn.star;
-            top: 45%;
-            left: 101%;
-        }
-    }
+    @include mxn.flex(column, 1.2rem);
     .hero-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
+        @include mxn.flex(column, 2rem);
         .adaptive-img-cover {
             min-width: 240px;
             min-height: 340px;

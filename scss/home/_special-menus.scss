@@ -2,94 +2,51 @@
 @use '../mixins' as mxn;
 
 .special-menus {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    h2 {
-        padding: 1.6rem;
-        font-size: 2.5rem;
-        &:before {
-            @include mxn.star;
-            top: 45%;
-            left: 0%;
-        }
-        &:after {
-            @include mxn.star;
-            top: 45%;
-            left: 95%;
+    @include mxn.flex(column, 2rem);
+    .animated {
+        .adaptive-img-cover {
+            position: relative;
+            min-width: 240px;
+            min-height: 340px;
+            width: 100%;
+            height: 100%;
+            transform: scale(1);
+            box-shadow: none;
+            &:hover {
+                transform: scale(1);
+            }
+            .container-price {
+                max-height: 340px;
+                min-height: 340px;
+                .price {
+                    max-height: 280px;
+                    min-height: 280px;
+                }
+            }
+            @media (min-width: 780px) and (max-width: 989px) {
+                max-height: 550px ;
+                min-height: 550px ; 
+                .container-price {
+                    min-height: 100%;
+                    .price {
+                        max-height: 490px ;
+                        min-height: 490px ;
+                    }
+                }
+            }
         }
     }
     .container-special-menus {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 2.5rem;
+        @include mxn.flex(column, 2.5rem);
         .card-special-menus {
-            width: 100%;
             padding: 1.6rem 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            @include mxn.flex(column, 0);
             background-color: var.$color-light;
             h3 {
                 padding-bottom: 1.6rem;
                 font-size: 2rem;
-                &:before {
+                &:before, &:after {
                     @include mxn.star;
-                    top: 15%;
-                    left: -15%;
-                }
-                &:after {
-                    @include mxn.star;
-                    top: 15%;
-                    left: 105%;
-                }
-            }
-            .adaptive-img-cover {
-                position: relative;
-                min-width: 240px;
-                min-height: 340px;
-                width: 100%;
-                height: 100%;
-                &:hover > .container-price {
-                    animation: fadeIn 450ms ease-in;
-                    opacity: 1;
-                }
-                @keyframes fadeIn {
-                    0% { opacity: 0; }
-                    20% { opacity: 0; }
-                    40% { opacity: 0.3; }
-                    60% { opacity: 0.5; }
-                    80% { opacity: 0.9; }
-                    100% { opacity: 1; }
-                  }
-            }
-            .container-price {
-                opacity: 0;
-                position: absolute;
-                top: 0;
-                left: 0;
-                z-index: 2;
-                width: 100%;
-                background-color: rgba(76,67,67,.9);
-                padding: 2rem;
-                .price {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    min-height:  300px;
-                    color: white;
-                    text-align: center;
-                    box-shadow: 0 0 0 5px white;
-                span:first-child {
-                    font-size: 5rem;
-                    font-weight: 500;
-                }
-                span:last-child {
-                    font-size: 15px;
-                }
                 }
             }
             .container-card-special-menus {
@@ -97,70 +54,26 @@
                 padding: 1.6rem 3rem;
             }
             & > span {
-                width: 100%;
-                padding: 1.6rem 5rem;
+                padding: 1.6rem 4rem;
                 border-bottom: 1px dashed var.$color-brown;
-                position: relative;
                 font-size: 1.5rem;
+                @include mxn.flex(row, 1rem);
+                justify-content: flex-start;
                 &:before {
                     @include mxn.star;
-                    left: calc(-1% + 40px);
                 }
             }
             button {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 1rem;
-                width: 100%;
-                padding: 1rem;
-                color: var.$color-light;
-                background-color: var.$color-brown;
-                transition: all .2s ease-in;
-                &:hover {
-                    background-color: var.$color-red;
-                }
+                @include mxn.flex(row, 1rem);
+                @include mxn.button;
                 .adaptive-img-contain {
                     width: 24px;
                     aspect-ratio: 1/1;
                 }
             }
         }
-    }
-}
-@media (min-width: 780px) {
-    main {
-        .special-menus {
-            .adaptive-img-cover {
-                max-height: 550px !important;
-                min-height: 550px !important;
-            }
-        }
-        .card-special-menus  .container-price {
-            .price {
-                max-height: 510px !important;
-                min-height: 510px !important;
-            }
-        }
-    }
-}
-@media (min-width: 980px) {
-    main {
-        .special-menus {
-            .container-special-menus {
-                flex-direction: row;
-                gap: 3rem;
-            }
-            .adaptive-img-cover {
-                min-height: 300px !important;
-                max-height: 300px !important;
-            }
-            .container-price {
-                .price {
-                    max-height: 260px !important;
-                    min-height: 260px !important;
-                }
-            }
+        @media (min-width: 980px) {
+            @include mxn.flex(row, 3rem);
         }
     }
 }

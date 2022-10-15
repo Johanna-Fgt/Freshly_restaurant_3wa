@@ -1,9 +1,34 @@
+@use './variables' as var;
+
+@mixin flex($direction, $gap) {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: $direction;
+    gap: $gap;
+    @if($direction == "row") {
+        justify-content: center;
+    }
+}
 @mixin star {
     font-size: 1rem;
     content: "\f005";
     color: #950000;
     font-family: "Font Awesome 5 Free";
-    position: absolute;
-    top: 40%;
-    left: -1%;
+}
+@mixin imgLarge {
+    width: 100%;
+    height: 400px;
+    max-width: var.$max-width-container;
+}
+@mixin button {
+    color: white;
+    background-color: var.$color-brown;
+    transition: all .2s ease-in;
+    border: none;
+    outline: none;
+    padding: 1rem;
+    &:hover {
+    background-color: var.$color-red;
+    }
 }

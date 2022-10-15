@@ -1,35 +1,28 @@
 @use './variables' as var;
+@use './mixins' as mxn;
 
 footer {
     width: 100%;
+    @include mxn.flex(column, 0);
     font-size: var.$font-size-footer;
-    .container-footer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    color: white;
+    .info {
+        width: 100%;
+        @include mxn.flex(column, 3rem);
+        // gap: 3rem;
         background-image: url('../assets/images/footer-bg.jpg');
         background-size: cover;
         background-repeat: no-repeat;
-    }
-    .info {
-        color: white;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 3rem 2rem;
-        width: 100%;
-        gap: 3rem;
+        padding: 3rem 2rem;        
         .card-info {
-            min-width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            width: 100%;
+            @include mxn.flex(column, 0);
             h6 {
                 font-size: var.$font-size-title-footer;
                 border-bottom: 1px dashed white;
                 width: 100%;
                 padding: 1.6rem 0;
-                text-align: center;
+                @include mxn.flex(row, 0);
             }
             a {
                 padding: 1rem;
@@ -46,13 +39,11 @@ footer {
         }
     }
     .terms {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
+        width: 100%;
+        @include mxn.flex(column, 2rem);
+        // gap: 2rem;
         padding: 2rem 4rem 4rem;
         background-color: var.$color-footer-bg;
-        color: white;
         .adaptive-img-contain {
             width: 64px;
             height: 64px;
@@ -79,17 +70,11 @@ footer {
     @media (min-width: 980px) {
         .info {
             max-width: var.$width-container;
-            
             padding-bottom: 5rem;
-            
         }
         .terms {
-            max-width: 100%;
-            min-width: 100%;
             p {
-                
                 max-width: var.$width-container;
-                
             }
         }
     }

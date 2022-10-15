@@ -3,36 +3,21 @@
 
 header {
     width: 100%;
-    display: flex;
-    flex-direction: column;
+    @include mxn.flex(column, 3rem);
     justify-content: center;
-    align-items: center;
-    gap: 3rem;
     padding-top: 5rem;
     .logo {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2.5rem;
+        @include mxn.flex(column, 2.5rem);
         .adaptive-img-contain {
             width: 15rem;
             aspect-ratio: 1 / 1;
         }
         a {
            h1 {
+            @include mxn.flex(row, 0);
             font-family: var.$font-default;
             font-weight: 500;
             color: black;
-            &:before {
-                @include mxn.star;
-                top: calc(var.$font-size-title /3);
-                left: -18px;
-            }
-            &:after {
-                @include mxn.star;
-                top: calc(var.$font-size-title /3);
-                left: calc(100% + 5px);
-            }
            }
             &:visited {
                 color: black;
@@ -67,10 +52,8 @@ header {
                 }
             }
         }
-    }  
-}
-@media (min-width: 780px) and (max-width: 979px) {
-    header {
+    }
+    @media (min-width: 780px) and (max-width: 979px) {
         gap: 1rem;
         .logo {
             gap: .5rem;
@@ -83,9 +66,7 @@ header {
             }
         }
     }
-}
-@media (min-width: 980px) {
-    header {
+    @media (min-width: 980px) {
         max-width: var.$width-container;
         flex-direction: row;
         justify-content: space-between;
@@ -99,7 +80,7 @@ header {
                     @include mxn.star;
                     top: 25%;
                     left: -7%;
-                }
+                    }
                 &:after {
                     @include mxn.star;
                     top: 25%;

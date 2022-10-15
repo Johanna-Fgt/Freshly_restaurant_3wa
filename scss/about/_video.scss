@@ -2,36 +2,15 @@
 @use '../mixins' as mxn;
 
 .video {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 2rem;
-    align-items: center;
-    h1 {
-        &:before {
-            @include mxn.star;
-            top: 35%;
-            left: -9%;
-        }
-        &:after {
-            @include mxn.star;
-            top: 35%;
-            left: 101%;
-        }
-    }
+    @include mxn.flex(column, 2rem);
     video {
         max-width: 100%;
         padding: 1rem 4rem;
-    }
-    @media (min-width: 780px) {
-            video {
-                padding: 2rem 10rem;
-            }
-    }
-    @media (min-width: 980px) {
-        video {
+        @media (min-width: 780px) {
+            padding: 2rem 10rem;
+        }
+        @media (min-width: 980px) {
             padding: 2rem 20rem;
         }
+    }
 }
-}
-
