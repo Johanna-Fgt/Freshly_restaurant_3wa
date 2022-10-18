@@ -16,21 +16,17 @@
                 transform: scale(1);
             }
             .container-price {
-                max-height: 340px;
-                min-height: 340px;
+                @include mxn.minMax(340px);
                 .price {
-                    max-height: 280px;
-                    min-height: 280px;
+                    @include mxn.minMax(280px);
                 }
             }
             @media (min-width: 780px) and (max-width: 989px) {
-                max-height: 550px ;
-                min-height: 550px ; 
+                @include mxn.minMax(550px);
                 .container-price {
                     min-height: 100%;
                     .price {
-                        max-height: 490px ;
-                        min-height: 490px ;
+                        @include mxn.minMax(490px);
                     }
                 }
             }
@@ -55,10 +51,10 @@
             }
             & > span {
                 padding: 1.6rem 4rem;
-                border-bottom: 1px dashed var.$color-brown;
                 font-size: 1.5rem;
                 @include mxn.flex(row, 1rem);
                 justify-content: flex-start;
+                @include mxn.borderDashed(var.$color-brown);
                 &:before {
                     @include mxn.star;
                 }

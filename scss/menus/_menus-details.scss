@@ -4,24 +4,48 @@
 .filtered-list {
     width: 100%;
     min-height: 380px;
-    display: flex;
+    @include mxn.flex(column, 4rem);
     justify-content: center;
-    flex-wrap: wrap;
-    gap:  4rem 1rem;
     position: relative;
     padding-bottom: 3rem;
+    background-color: var.$color-light;
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: white;
+        width: 100%;
+        height: 20rem;
+        z-index: 2;
+        @media (min-width: 480px) {
+            height: 6rem;
+        }
+    }
+    .adaptive-img-cover {
+        width: 90%;
+        @media (min-width: 480px) {
+            width: 47%;
+        }
+        @media (min-width: 780px) {
+            max-width: calc(80% / 3);
+        }
+    }
     button {
         border: none;
         outline: none;
-        background-color: var.$color-light;
-        color: var.$color-brown;
-        padding: 1rem 2rem;
-        margin-bottom: 2rem;
-        text-transform: uppercase;
-        font-weight: 700;
+        background-color: white;
+        padding: 0;
         max-width: fit-content;
-        position: relative;
-        &:focus {
+        z-index: 10;
+        span {
+            background-color: var.$color-light;
+            color: var.$color-brown;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 1rem 2rem;
+        }
+        &:focus span {
             background-color: var.$color-red;
             color: white;
         }
@@ -34,30 +58,65 @@
         &[data-filter="vegan"]:focus ~ div:not([class*="vegan"]) {
             display:none;
         }
-        @media (min-width: 1108px) {
-            height: fit-content;
+        @media (min-width: 480px) {
+            min-width: 10rem;
+            max-width: 10rem;
+            height: 6rem;
+            &[data-filter="*"] {
+                position: absolute;
+                top: 0;
+                left: 10%;
+            }
+            &[data-filter="meat"] {
+                position: absolute;
+                top: 0;
+                left: 30%;
+            }
+            &[data-filter="vegan"] {
+                position: absolute;
+                top: 0;
+                left: 50%;
+            }
+            &[data-filter="fish"] {
+                position: absolute;
+                top: 0;
+                left: 70%;
+            }
+        }
+        @media (min-width: 780px) {
+            &[data-filter="*"] {
+                left: 20%;
+            }
+            &[data-filter="meat"] {
+                left: 35%;
+            }
+            &[data-filter="vegan"] {
+                left: 50%;
+            }
+            &[data-filter="fish"] {
+                left: 65%;
+            }
+        }
+        @media (min-width: 980px) {
+            &[data-filter="*"] {
+                left: 30%;
+            }
+            &[data-filter="meat"] {
+                left: 40%;
+            }
+            &[data-filter="vegan"] {
+                left: 50%;
+            }
+            &[data-filter="fish"] {
+                left: 60%;
+            }
         }
     }
-    .cheat-div {
-        width: 0px;
-        max-height: 30px;
-        @media (min-width: 720px) {
-            width: 80px;
-        }
-        @media (min-width: 813px) {
-                width: 180px;
-        }
-        @media (min-width: 1108px) {
-            width: 280px;
-        }
-    }  
-    .cheat-container {
-        width: 100%;
-        height: calc(100% - 60px);
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        z-index: -4;
-        background-color: var.$color-light;
+    @media (min-width: 480px) {
+        padding-top: 10rem;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 4rem 1rem;
     }
-}
+} 

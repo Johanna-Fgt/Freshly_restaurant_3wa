@@ -13,7 +13,7 @@
 @mixin star {
     font-size: 1rem;
     content: "\f005";
-    color: #950000;
+    color: var.$color-red;
     font-family: "Font Awesome 5 Free";
 }
 @mixin imgLarge {
@@ -31,4 +31,19 @@
     &:hover {
     background-color: var.$color-red;
     }
+}
+@mixin borderDashed($color) {
+    position: relative;
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        border: 1px dashed $color;
+    }
+}
+@mixin minMax($height) {
+    min-height: $height;
+    max-height: $height;
 }

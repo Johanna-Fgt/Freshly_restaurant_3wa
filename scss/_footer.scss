@@ -2,79 +2,67 @@
 @use './mixins' as mxn;
 
 footer {
-    width: 100%;
     @include mxn.flex(column, 0);
     font-size: var.$font-size-footer;
     color: white;
     .info {
-        width: 100%;
-        @include mxn.flex(column, 3rem);
-        // gap: 3rem;
+        @include mxn.flex(column, 0);
         background-image: url('../assets/images/footer-bg.jpg');
         background-size: cover;
-        background-repeat: no-repeat;
-        padding: 3rem 2rem;        
-        .card-info {
-            width: 100%;
-            @include mxn.flex(column, 0);
-            h6 {
-                font-size: var.$font-size-title-footer;
-                border-bottom: 1px dashed white;
-                width: 100%;
-                padding: 1.6rem 0;
-                @include mxn.flex(row, 0);
-            }
-            a {
-                padding: 1rem;
-                color: white;
-                transition: all .2s ease-in;
-                font-size: 2rem;
-                &:hover {
-                    color:var.$color-red;
+        background-repeat: no-repeat; 
+        .info-container {
+            @include mxn.flex(column, 2rem);
+            padding: 3rem 2rem;
+            max-width: var.$width-container;
+            .card-info {
+                @include mxn.flex(column, 0);
+                h6 {
+                    font-size: var.$font-size-title-footer;
+                    padding: 1.6rem 0;
+                    @include mxn.flex(row, 0);
+                    @include mxn.borderDashed(white);
+                }
+                a {
+                    padding: 1rem;
+                    color: white;
+                    transition: all .2s ease-in;
+                    font-size: 2rem;
+                    &:hover {
+                        color:var.$color-red;
+                    }
+                }
+                span {
+                    padding: .5rem 0;
+                }
+            }  
+            @media (min-width: 780px) {
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: space-between;
+                .card-info {
+                    max-width: 30%;
+                    min-width: 30%;
                 }
             }
-            span {
-                padding: .5rem 0;
-            }
-        }
+        } 
     }
     .terms {
         width: 100%;
-        @include mxn.flex(column, 2rem);
-        // gap: 2rem;
-        padding: 2rem 4rem 4rem;
         background-color: var.$color-footer-bg;
-        .adaptive-img-contain {
-            width: 64px;
-            height: 64px;
-        }
-        p {
-            text-align: center;
-            span, a, a:visited {
-                color: white;
-                text-decoration: underline;
+        .terms-container {
+            @include mxn.flex(column, 2rem);
+            padding: 2rem 4rem 4rem;
+            .adaptive-img-contain {
+                width: 64px;
+                height: 64px;
             }
-        }
-    }
-    @media (min-width: 780px) {
-        .info {
-            flex-direction: row;
-            align-items: flex-start;
-            justify-content: space-between;
-            .card-info {
-                max-width: 30%;
-                min-width: 30%;
-            }
-        }
-    }
-    @media (min-width: 980px) {
-        .info {
-            max-width: var.$width-container;
-            padding-bottom: 5rem;
-        }
-        .terms {
             p {
+                text-align: center;
                 max-width: var.$width-container;
+                span, a, a:visited {
+                    color: white;
+                    text-decoration: underline;
+                }
             }
         }
     }

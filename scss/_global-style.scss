@@ -2,16 +2,27 @@
 @use './mixins' as mxn;
 
 html {
-    min-height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    max-width: 100%;
+    @include mxn.minMax(100%);
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     font-size: 62.5%;
 }
 body {
-    max-height: 100%;
     @include mxn.flex(column, 0);
     flex: 1 0;
-    // overflow: hidden;
+    max-height: 100vh;
+    overflow: hidden;
+}
+.body {
+    min-height: 100%;
+    overflow: scroll;
+    @include mxn.flex(column, 4rem);
     font-weight: 500;
     font-size: var.$font-size-default;
     font-family: var.$font-default;
@@ -24,9 +35,7 @@ body {
         font-family: var.$font-title;
         position: relative;
         width: fit-content;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
+        @include mxn.flex(row, 1rem);
     }
     h1:before, h1:after, h2:before, h2:after {
         @include mxn.star;
@@ -39,14 +48,10 @@ body {
     }
 }
 main {
-    width: 100%;
-    max-width: var.$width-container;
-    padding: 3rem 2rem;
-    display: flex;
-    flex-direction: column;
+    @include mxn.flex(column, 3rem);
     justify-content: center;
-    align-items: center;
-    gap: 3rem;
+    padding: 0 2rem;
+    max-width: var.$width-container;
 }
 .animated {
     .adaptive-img-cover {
@@ -81,8 +86,7 @@ main {
             padding: 3rem;
             height: 100%;
             .price {
-                max-height: 170px;
-                min-height: 170px;
+                @include mxn.minMax(170px);
                 @include mxn.flex(column, 1rem);
                 justify-content: center;
                 color: white;
@@ -96,22 +100,18 @@ main {
         }
         @media (min-width: 780px) {
             min-width: calc(97% / 3);
-            min-height: 150px;
-            max-height: 150px;
+            @include mxn.minMax(150px);
             .container-price {
                 .price {
-                    max-height: 90px;
-                    min-height: 90px;
+                    @include mxn.minMax(90px);
                 }
             }    
         } 
         @media (min-width: 980px) {
-            max-height: 300px;
-            min-height: 300px;
+            @include mxn.minMax(300px);
             .container-price {
                 .price {
-                    max-height: 240px;
-                    min-height: 240px;
+                    @include mxn.minMax(240px);
                 }
             }
         }
