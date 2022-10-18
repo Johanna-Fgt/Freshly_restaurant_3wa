@@ -764,6 +764,9 @@ header nav ul li a:hover {
   flex-direction: column;
   gap: 1.2rem;
 }
+.hero h1 {
+  text-align: center;
+}
 .hero .hero-container {
   width: 100%;
   display: flex;
